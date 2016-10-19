@@ -1,0 +1,5 @@
+language: objective-c
+os: osx
+osx_image: xcode8
+xcode_project: ios-ci-sample.xcodeproj
+xcode_scheme: ios-ci-sample
