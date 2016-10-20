@@ -4,4 +4,4 @@ osx_image: xcode8
 #xcode_project: ios-ci-sample.xcodeproj
 #xcode_scheme: ios-ci-sample
 script:
-  - xcodebuild test -scheme ios-ci-sample -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6,OS=10.0'
+  - xcodebuild test -scheme ios-ci-sample -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone SE,OS=10.0'
