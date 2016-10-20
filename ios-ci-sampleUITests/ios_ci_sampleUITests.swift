@@ -33,6 +33,9 @@ class ios_ci_sampleUITests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         let app = XCUIApplication()
         app.buttons["Say hello"].tap()
+        XCTAssertEqual("true", "true")
+        app.buttons["Say hello"].tap()
+        XCTAssertEqual("true", "true")
     }
     
 }
