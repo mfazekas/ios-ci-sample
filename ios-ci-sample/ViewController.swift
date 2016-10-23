@@ -19,6 +19,7 @@ class ViewController: UIViewController {
 
     @IBAction func sayHello(_ sender: AnyObject) {
         label.text = "Said hello!"
+        label.textColor = UIColor.red
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
