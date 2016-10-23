@@ -2,6 +2,7 @@
 require 'plist'
 require 'byebug'
 require 'percy'
+require 'chunky_png'
 
 images_dir = "Logs/Test/Attachments"
 
@@ -39,13 +40,18 @@ class Screenshot
     resources = []
     image_path = path_as_png_url
     index_path = path_as_index_url
-    #.gsub('/','_').gsub('"','_').gsub(' ','_')
     html = "<img src=\"#{image_path}\" height=\"1136\" width=\"640\">"
     resources << Percy::Client::Resource.new(index_path, is_root:true, content:html)
-    #byebug
-    resources << Percy::Client::Resource.new(image_path, content: File.read(@data[:image]))
+    resources << Percy::Client::Resource.new(image_path, content: process_image(@data[:image]))
     #File.open("index.html", 'w') { |file| file.write(html) }
     #File.open(image_path, 'w') { |file| file.write(File.read(@data[:image])) }
+  end
+
+  def process_image(image_path)
+    # remove time
+    image = ChunkyPNG::Image.from_file(image_path)
+    image.rect(260, 0, 260+155, 0+45, ChunkyPNG::Color::TRANSPARENT, ChunkyPNG::Color::WHITE)
+    image.to_blob
   end
 
   def path_as_png_url
