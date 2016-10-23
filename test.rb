@@ -98,6 +98,7 @@ end
 
 class Build
   def initialize()
+    Percy.config.default_widths = [640]
     @client = Percy.client
     @build = Percy.create_build(client.config.repo)
   end
