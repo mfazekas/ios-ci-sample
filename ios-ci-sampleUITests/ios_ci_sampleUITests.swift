@@ -9,12 +9,9 @@
 import XCTest
 
 class ios_ci_sampleUITests: XCTestCase {
-        
     override func setUp() {
         super.setUp()
-        
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
         // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
@@ -28,13 +25,17 @@ class ios_ci_sampleUITests: XCTestCase {
         super.tearDown()
     }
     
+    override func recordFailure(withDescription description: String, inFile filePath: String, atLine lineNumber: UInt, expected: Bool)
+    {
+        super.recordFailure(withDescription: description, inFile: filePath, atLine: lineNumber, expected: expected)
+    }
+    
+    
     func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
         let app = XCUIApplication()
+        percySnapshot(path:"before_tap")
         app.buttons["Say hello"].tap()
-        XCTAssertEqual("true", "true")
-        app.buttons["Say hello"].tap()
+        percySnapshot(path:"after_tap")
         XCTAssertEqual("true", "true")
     }
     

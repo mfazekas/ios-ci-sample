@@ -1,6 +1,3 @@
 source 'https://rubygems.org'
 
-gem 'percy-capybara', '~> 2.3'
-gem 'plist'
-gem 'byebug'
-gem 'chunky_png'
+gem 'percy-ios', path: './percy-ios'
