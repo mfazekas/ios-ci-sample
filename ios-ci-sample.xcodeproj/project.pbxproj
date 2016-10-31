@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D87989DC1DC5B55900B1A335 /* XCTestCase+percySnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87989DB1DC5B55900B1A335 /* XCTestCase+percySnapshot.swift */; };
 		D8FAA0FC1DB807BC007CDBC5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FAA0FB1DB807BC007CDBC5 /* AppDelegate.swift */; };
 		D8FAA0FE1DB807BC007CDBC5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FAA0FD1DB807BC007CDBC5 /* ViewController.swift */; };
 		D8FAA1011DB807BC007CDBC5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8FAA0FF1DB807BC007CDBC5 /* Main.storyboard */; };
@@ -34,6 +35,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D87989D41DC5AE2400B1A335 /* ios-ci-sampleUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ios-ci-sampleUITests-Bridging-Header.h"; sourceTree = "<group>"; };
+		D87989D81DC5AE7400B1A335 /* XCTestCase+PercySnapshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XCTestCase+PercySnapshot.h"; sourceTree = "<group>"; };
+		D87989D91DC5AE7400B1A335 /* XCTestCase+PercySnapshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XCTestCase+PercySnapshot.m"; sourceTree = "<group>"; };
+		D87989DB1DC5B55900B1A335 /* XCTestCase+percySnapshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+percySnapshot.swift"; sourceTree = "<group>"; };
 		D8FAA0F81DB807BC007CDBC5 /* ios-ci-sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-ci-sample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8FAA0FB1DB807BC007CDBC5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D8FAA0FD1DB807BC007CDBC5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -119,8 +124,12 @@
 		D8FAA11A1DB807BD007CDBC5 /* ios-ci-sampleUITests */ = {
 			isa = PBXGroup;
 			children = (
+				D87989D81DC5AE7400B1A335 /* XCTestCase+PercySnapshot.h */,
+				D87989D91DC5AE7400B1A335 /* XCTestCase+PercySnapshot.m */,
 				D8FAA11B1DB807BD007CDBC5 /* ios_ci_sampleUITests.swift */,
+				D87989DB1DC5B55900B1A335 /* XCTestCase+percySnapshot.swift */,
 				D8FAA11D1DB807BD007CDBC5 /* Info.plist */,
+				D87989D41DC5AE2400B1A335 /* ios-ci-sampleUITests-Bridging-Header.h */,
 			);
 			path = "ios-ci-sampleUITests";
 			sourceTree = "<group>";
@@ -188,11 +197,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Miklos Fazekas";
 				TargetAttributes = {
 					D8FAA0F71DB807BC007CDBC5 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = KU665FEG3W;
 						ProvisioningStyle = Automatic;
 					};
 					D8FAA10B1DB807BD007CDBC5 = {
@@ -202,6 +212,8 @@
 					};
 					D8FAA1161DB807BD007CDBC5 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = KU665FEG3W;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 						TestTargetID = D8FAA0F71DB807BC007CDBC5;
 					};
@@ -277,6 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8FAA11C1DB807BD007CDBC5 /* ios_ci_sampleUITests.swift in Sources */,
+				D87989DC1DC5B55900B1A335 /* XCTestCase+percySnapshot.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,6 +346,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -383,6 +397,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -412,6 +427,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = KU665FEG3W;
 				INFOPLIST_FILE = "ios-ci-sample/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.szemafor.ios-ci-sample";
@@ -424,6 +440,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = KU665FEG3W;
 				INFOPLIST_FILE = "ios-ci-sample/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.szemafor.ios-ci-sample";
@@ -464,10 +481,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = KU665FEG3W;
 				INFOPLIST_FILE = "ios-ci-sampleUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.szemafor.ios-ci-sampleUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ios-ci-sampleUITests/ios-ci-sampleUITests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = "ios-ci-sample";
 			};
@@ -477,10 +498,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = KU665FEG3W;
 				INFOPLIST_FILE = "ios-ci-sampleUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.szemafor.ios-ci-sampleUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ios-ci-sampleUITests/ios-ci-sampleUITests-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = "ios-ci-sample";
 			};
@@ -505,6 +529,7 @@
 				D8FAA1221DB807BD007CDBC5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D8FAA1231DB807BD007CDBC5 /* Build configuration list for PBXNativeTarget "ios-ci-sampleTests" */ = {
 			isa = XCConfigurationList;
@@ -513,6 +538,7 @@
 				D8FAA1251DB807BD007CDBC5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D8FAA1261DB807BD007CDBC5 /* Build configuration list for PBXNativeTarget "ios-ci-sampleUITests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +547,7 @@
 				D8FAA1281DB807BD007CDBC5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
