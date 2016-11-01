@@ -31,9 +31,11 @@ module Percy
                 height: height
               }
             end
+            debug_with_js = true
             full_path = "/"+path+".html"
-            html = Percy::Client::Resource.new(full_path, is_root: true, content:_build_html(images), mimetype: "text/html")
+            html = Percy::Client::Resource.new(full_path, is_root: true, content:_build_html(images, debug_with_js), mimetype: "text/html", enable_javascript: debug_with_js)
             resources = [html] + images.map { |image_info| image_info[:resource] }
+            #require 'byebug' ; byebug
             _dbg_save_resources(resources, "/tmp/percy-dbg") if Percy.config.debug
             upload_resources(resources, client, current_build_id, widths: images.map { |i| i[:width] }, name: path)
           end
@@ -104,19 +106,31 @@ module Percy
           path = File.join(basedir, resource.resource_url)
           dir_path = File.dirname(path)
           FileUtils.mkdir_p dir_path
-          File.open(path, 'w') { |file| file.write(resource.content) }
+          if resource.is_root
+            content = resource.content
+            up = resource.resource_url.split("/")[2..-1].map { ".." }.join('/')
+            content = content.gsub("src=\"/", "src=\"#{up}/")
+          else
+            content = resource.content
+          end
+          File.open(path, 'w') { |file| file.write(content) }
         end
         Percy.logger.debug { "processed files were saved to: #{basedir} for debugging" }
       end
 
-      def _build_html(images)
+      def _build_html(images, debug_with_js = false)
         widths = images.map { |image| image[:width] }
         raise "Error we don't support multiple devices with the same width" if widths.detect{ |width| widths.count(width) > 1 }
         media_queries = images.map do |image| 
           width = image[:width]
-          "@media screen and (max-width: #{width}px) and (min-width: #{width}px) {" +
+          "@media screen and (max-width: #{width+16}px) and (min-width: #{width}px) {" +
           images.map { |image| "img.#{image[:device_name_class]} { display: none; }" if image[:width] != width }.compact.join("\n") +
           "}"
+        end
+        dbg_thresholds = [] 
+        thresholds.each do |thr|
+          media_queries << "@media screen and (max-width: #{thr}px) { div.less-than-#{thr} { background-color: red; }}"
+          media_queries << "@media screen and (min-width: #{thr}px) { div.more-than-#{thr} { background-color: red; }}"
         end
         img_tags = images.map do |image|
           %{<img src="#{image[:resource].resource_url}" width="#{image[:width]}" height="#{image[:height]}" class="#{image[:device_name_class]}"></img>}
@@ -130,7 +144,12 @@ module Percy
           </style>
           </head>
           <body>
+            #{thresholds.map { |thr| "<div class='less-than-#{thr}'>Less than #{thr}</div><div class='more-than-#{thr}'>More than #{thr}</div>" }.join("\n")}
+            <div id="js-debugger">No js?!</div>
             #{img_tags.join("\n")}
+            <script>
+            document.getElementById("js-debugger").innerHTML = "Hello JavaScript!";
+            </script>
           </body>
           </html>
         }
